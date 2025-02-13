@@ -1,4 +1,4 @@
-package main
+package todo
 
 import (
 	"bufio"
@@ -18,7 +18,7 @@ var todos []Todo
 var currentID int
 var csvFile = "todos.csv"
 
-func main() {
+func StartTodo() {
 	loadTodosFromCSV()
 
 	reader := bufio.NewReader(os.Stdin)

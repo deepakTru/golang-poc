@@ -1,4 +1,4 @@
-package main
+package bill
 
 import (
 	"bufio"
@@ -12,10 +12,6 @@ type Bill struct {
 	name  string
 	items map[string]float64
 	tip   float64
-}
-
-func (b *Bill) addName(name string) {
-	b.name = name
 }
 
 func (b *Bill) addItem(itemName string, itemPrice float64) {
@@ -74,7 +70,7 @@ func addItemsInBill(b Bill) {
 		b.addTip(floatTip)
 		addItemsInBill(b)
 	case "s":
-		err := os.WriteFile(fmt.Sprintf("bills/%v.txt", b.name), []byte(b.formatBill()), 0644)
+		err := os.WriteFile(fmt.Sprintf("src/bill/%v.txt", b.name), []byte(b.formatBill()), 0644)
 		if err != nil {
 			fmt.Print("Error writing bill", err)
 		}
@@ -86,7 +82,7 @@ func addItemsInBill(b Bill) {
 
 }
 
-func main() {
+func CreateBill() {
 	reader := bufio.NewReader(os.Stdin)
 	billName, _ := promptReader(reader, "Enter Bill Name: ")
 	bill := Bill{name: billName, items: map[string]float64{}, tip: 0}
