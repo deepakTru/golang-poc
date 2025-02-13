@@ -1,4 +1,4 @@
-package main
+package scrapper
 
 import (
 	"fmt"
@@ -47,7 +47,7 @@ func fetchTitle(url string, wg *sync.WaitGroup, results chan<- ScrapeResult) {
 	results <- ScrapeResult{URL: url, Title: title}
 }
 
-func main() {
+func WebScrapper() {
 	// List of URLs to scrape
 	urls := []string{
 		"https://www.google.com",
